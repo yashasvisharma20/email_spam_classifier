@@ -1,0 +1,203 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            background-color: #000;
+            color: white;
+            font-family: 'Roboto', sans-serif;
+            font-size: 1.1rem;
+        }
+
+        .navbar {
+            background-color: transparent;
+        }
+
+        .navbar-brand {
+            color: #fff;
+            font-weight: bold;
+        }
+
+        .hero-section {
+            position: relative;
+            text-align: center;
+            color: white;
+            padding: 150px 20px;
+            margin-bottom: 30px;
+            animation: fadeIn 2s;
+        }
+
+        .hero-section::before {
+            content: "";
+            background: url('/static/laptop-with-many-envelopes.jpg') no-repeat center center;
+            background-size: cover;
+            opacity: 0.3;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            position: absolute;
+            z-index: -1;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        .content-container {
+            background-color: #ffffff;
+            color: #333;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 30px;
+            animation: slideIn 1.5s;
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(-100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+
+        h2 {
+            font-weight: bold;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .form-floating textarea {
+            height: 200px;
+            padding: 20px;
+            resize: none;
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border: none;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        .about-me {
+            background-color: #ffffff;
+            color: #000;
+            padding: 50px;
+            border-radius: 10px;
+            text-align: center;
+            margin-bottom: 30px;
+            position: relative;
+            animation: fadeInUp 2s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                transform: translateY(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        .footer {
+            text-align: center;
+            padding: 10px;
+            background-color: #fff;
+            color: #000;
+            border-radius: 10px;
+            width: 50%;
+            margin: 0 auto;
+            margin-top: 30px;
+        }
+
+        .social-icons a {
+            color: #000;
+            margin: 0 10px;
+        }
+    </style>
+
+    <title>Email Spam Classifier</title>
+</head>
+
+<body>
+
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg">
+        <div class="container">
+            <a class="navbar-brand" href="#">Email Spam Classifier</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container">
+        <div class="hero-section">
+            <h1>Welcome to the Email Spam Classifier</h1>
+        </div>
+    </div>
+
+    <!-- About the Model -->
+    <div class="container content-container">
+        <h2>About the Model</h2>
+        <p>Empower your inbox with our Email Classification Model!This cutting-edge tool accurately identifies spam and legitimate emails using advanced machine learning algorithms. By leveraging Sklearn’s Naive Bayes classifiers (including MultinomialNB, BernoulliNB, and GaussianNB), we ensure high precision and reliability.</p>
+        <p>Keep your inbox clean and secure with this easy-to-use tool.</p>
+    </div>
+
+    <!-- Input Form -->
+    <div class="container content-container">
+        <h2>Classify Your Email</h2>
+        <form action="{{ url_for('predict') }}" method="POST">
+            <div class="form-floating">
+                <textarea class="form-control" placeholder="Write your email here.." id="email" name="email"
+                    required></textarea>
+                <label for="email">Write your email here...</label>
+            </div>
+            <button class="w-100 btn btn-lg btn-primary" type="submit">Submit</button>
+        </form>
+    </div>
+
+    <!-- About Me Section -->
+    <div class="container about-me">
+        <h2>About Me</h2>
+        <p>Created by Yashasvi Sharma. I am passionate about data science and machine learning. This project is a reflection of my dedication to developing tools that make life easier and more secure.</p>
+    </div>
+
+    <!-- Footer -->
+    <div class="footer">
+        <p>&copy; 2024 Email Spam Classifier. All Rights Reserved.</p>
+    </div>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js"
+        integrity="sha384-KsvD2tf5OgqgNSYXj7mB8nvKqt1cy1N1vlZlZR+SB6Yl4wQD/aVTKMxmcTZV8Uwf" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.min.js"
+        integrity="sha384-pzjw8f+ua7Kw1TIq2+9Thty5KVphtB8mKMRSLZ+kDlzO/cpshGz7U3pGZfNfNE2p" crossorigin="anonymous">
+    </script>
+
+</body>
+
+</html>
